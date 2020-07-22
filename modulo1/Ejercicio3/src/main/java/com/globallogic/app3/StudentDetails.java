@@ -13,7 +13,7 @@ public class StudentDetails {
 		Scanner consola = new Scanner(System.in);
 		int age = Integer.parseInt(consola.nextLine());
 		estudiante.studentAge(age);
-		
+		consola.close();
 	}
 
 	private void studentAge(int age)
