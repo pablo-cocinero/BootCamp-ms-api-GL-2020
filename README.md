@@ -1,3 +1,3 @@
 # BootCamp-ms-api-GL-2020
 
-Cambios para el ejercicio 1.3
+Práctica individual del BootCamp de Global Logic 2020

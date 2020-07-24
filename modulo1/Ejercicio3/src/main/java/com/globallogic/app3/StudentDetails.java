@@ -17,10 +17,14 @@ public class StudentDetails {
 	}
 
 	private void studentAge(int age)
-	{
-//		int age = 0;
-//		age += 5;		
+	{	
 		System.out.println("La edad del estudiantes es: " + age);
 	}
 	
+	private void studentAge()
+	{
+		int age = 0;
+		age += 5;	
+		System.out.println("La edad del estudiantes es: " + age);
+	}
 }
