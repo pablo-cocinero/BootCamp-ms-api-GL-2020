@@ -1,49 +1,85 @@
 package coverage.loteria;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
-import org.junit.jupiter.api.BeforeEach;
+import java.util.Random;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import coverage.loteria.model.CartonGenerator;
 
+@ExtendWith(MockitoExtension.class)
 class LoteriaTest {
 
-	private Loteria loteria;
+	Loteria loteria;
+	@Mock
+	private CartonGenerator cartonMock; 
 	
-	@BeforeEach
-	void setUp()
+	@InjectMocks
+	private CartonGenerator cartonInjectMocks; 
+	
+	@Mock
+	private static Random random;
+	
+	@Test
+	@DisplayName("sin jugar")
+	void test_sinJugar()
 	{
-		loteria = new Loteria(1000000f, 1000, new CartonGenerator());
-	}
-	
-	@Test
-	@DisplayName("getPozo")
-	void testPozo() {
-		assertEquals(1000000f,loteria.getPozo());
-	}
-	
-	@Test
-	@DisplayName("getBoletos")
-	void testBoletos() {
+		loteria = new Loteria(50000,1000,new CartonGenerator());
+		assertEquals(50000,loteria.getPozo());
 		assertEquals(1000,loteria.getBoletos());
-	}
-
-	@Test
-	@DisplayName("getGanadores")
-	void testGanadores() {
-		loteria.jugada();
 		assertEquals(0,loteria.getGanadores());
-	}
-	
-	@Test
-	@DisplayName("get Numero de Ganadores")
-	void testNumGanadores() {
 		assertFalse(loteria.hayGanadorUnico());
 		assertFalse(loteria.hayCuadrupleGanador());
 	}
 	
-	//La forma de cubrir el 100% del código con test es usando instancias mock, para generar el caso ganador
+	@Test
+	@DisplayName("jugada normal")
+	void test_jugadaNormal()
+	{
+		loteria = new Loteria(50000,1000,new CartonGenerator());
+		loteria.jugada();
+		assertEquals(50000,loteria.getPozo());
+		assertEquals(1000,loteria.getBoletos());
+		assertEquals(0,loteria.getGanadores());
+		assertFalse(loteria.hayGanadorUnico());
+		assertFalse(loteria.hayCuadrupleGanador());
+	}
+	
+	@Test
+	@DisplayName("un ganador")
+	void test_unGanador()
+	{
+		when(cartonMock.isGanador()).thenReturn(true, false);
+		
+		loteria = new Loteria(50000,1000,cartonMock);
+		loteria.jugada();
+		assertEquals(50000,loteria.getPozo());
+		assertEquals(1000,loteria.getBoletos());
+		assertEquals(1,loteria.getGanadores());
+		assertTrue(loteria.hayGanadorUnico());
+		assertFalse(loteria.hayCuadrupleGanador());
+	}
+	
+	@Test
+	@DisplayName("cuatro ganador")
+	void test_cuatroGanadores()
+	{
+		when(random.nextInt()).thenReturn(1, 1, 1 , 1, 0);
+		
+		loteria = new Loteria(50000,1000,cartonInjectMocks);
+		loteria.jugada();
+		assertEquals(50000,loteria.getPozo());
+		assertEquals(1000,loteria.getBoletos());
+		assertEquals(4,loteria.getGanadores());
+		assertFalse(loteria.hayGanadorUnico());
+		assertTrue(loteria.hayCuadrupleGanador());
+	}
 	
 }
