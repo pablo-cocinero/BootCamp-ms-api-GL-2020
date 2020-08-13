@@ -49,4 +49,16 @@ public class Competidor {
 	{
 		return "\nNumero: " + numero + ", Nombre: " + nombre;
 	}
+	
+	@Override
+	public boolean equals(Object object)
+	{
+		Competidor otro = (Competidor)object;
+		if(this.getNumero().equals(otro.getNumero()) && this.getNombre().equals(otro.getNombre())&& this.getCarrera().equals(otro.getCarrera()))
+		{
+			return true;
+		}else
+			return false;
+	}
+	
 }

@@ -64,4 +64,15 @@ public class Carrera {
 		return "Id: " + id + ", Fecha: " + fecha + " Nombre: " + nombre + "\nCompetidores: \n" + competidores.toString();
 	}
 	
+	@Override
+	public boolean equals(Object object)
+	{
+		Carrera otro = (Carrera)object;
+		if(this.getId().equals(otro.getId()) && this.getNombre().equals(otro.getNombre())&& this.getFecha().equals(otro.getFecha()))
+		{
+			return true;
+		}else
+			return false;
+	}
+	
 }

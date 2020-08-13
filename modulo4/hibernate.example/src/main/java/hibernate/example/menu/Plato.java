@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="plato")
 public class Plato {
@@ -30,6 +31,9 @@ public class Plato {
 	@JoinColumn(name = "menu_id")
 	private Menu menu;
 	
+	public Integer getId() {
+		return id;
+	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -59,5 +63,16 @@ public class Plato {
 	public String toString()
 	{
 		return "\n- nombre: "+ nombre + "\n- descripcion: "+ descripcion + "\n- precio: "+ precio;
+	}
+	
+	@Override
+	public boolean equals(Object object)
+	{
+		Plato otro = (Plato)object;
+		if(this.getId().equals(otro.getId()) && this.getNombre().equals(otro.getNombre())&& this.getDescripcion().equals(otro.getDescripcion()) && this.getPrecio().equals(otro.getPrecio()))
+		{
+			return true;
+		}else
+			return false;
 	}
 }
