@@ -1,4 +1,4 @@
-package com.globallogic.bootcampgl;
+package com.globallogic.bootcampms.initializrProduct;
 
 import java.util.List;
 

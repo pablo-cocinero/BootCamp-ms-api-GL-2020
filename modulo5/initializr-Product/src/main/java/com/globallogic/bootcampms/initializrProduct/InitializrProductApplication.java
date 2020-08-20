@@ -1,4 +1,4 @@
-package com.globallogic.bootcampgl;
+package com.globallogic.bootcampms.initializrProduct;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,23 +8,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class ProductApplication {
+public class InitializrProductApplication {
 
 	public static void main(String[] args) {
 		
-		ConfigurableApplicationContext	context = SpringApplication.run(ProductApplication.class, args);
+		ConfigurableApplicationContext	context = SpringApplication.run(InitializrProductApplication.class, args);
 		
 		ProductRepository productRepo = context.getBean(ProductRepository.class);
 		List<Product> products = new ArrayList<Product>();
-		Product product = new Product();
-		product.setId("C-00221");
-		product.setName("Clavos");
+		Product product = context.getBean(Product.class);
 		products.add(product);
 		productRepo.setProducts(products);
 		
 		System.out.println(productRepo.getById("C-00221"));
-		
-		
 	}
+	
+	
 
 }
