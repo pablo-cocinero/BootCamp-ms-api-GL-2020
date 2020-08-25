@@ -1,5 +1,7 @@
 package com.globallogic.bootcampgl.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,14 +29,14 @@ public class ProductServiceController
 		}
 		
 		@RequestMapping(value = "/products", method = RequestMethod.POST)
-		public ResponseEntity<Object> createProduct(@RequestBody ProductDTO productDTO)
+		public ResponseEntity<Object> createProduct(@Valid @RequestBody ProductDTO productDTO)
 		{
 			productService.createProduct(productDTO);
 			return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED);
 		}
 		
 		@RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
-		public ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @RequestBody ProductDTO productDTO)
+		public ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @Valid @RequestBody ProductDTO productDTO)
 		{
 			productService.updateProduct(id, productDTO);
 			return new ResponseEntity<>("Product is updated successfully", HttpStatus.OK);
