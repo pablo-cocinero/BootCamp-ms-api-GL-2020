@@ -6,284 +6,528 @@
 	},
 	"item": [
 		{
-			"name": "Get Vehiculos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/vehiculos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"vehiculos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create vehiculo",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\r\n\"codigo\": 12345,\r\n\r\n\"identificacion\": \"AB-123-CD\",\r\n\r\n\"tipo\": {\r\n\r\n\"codigo\": 12345,\r\n\r\n\"categoria\": \"Sedan\",\r\n\r\n\"puertas\": \"4\"\r\n\r\n},\r\n\r\n\"modelo\": {\r\n\r\n\"codigo\": 12345678,\r\n\r\n\"marca\": \"Global Motors\",\r\n\r\n\"nombre\": \"911 Programador\"\r\n\r\n},\r\n\r\n\"fechaProduccion\": \"2020-08-17\"\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "5.2",
+			"item": [
+				{
+					"name": "create carrera",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"fecha\": \"2020-07-17\",\r\n\r\n\"nombre\": \"Gran Carrera Global\",\r\n\r\n\"competidores\": [\r\n\r\n{\"numero\":2,\"Nombre\":\"Sebastian Loeb\"}\r\n\r\n]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/carreras",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carreras"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/vehiculos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"vehiculos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "update vehiculo",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\r\n\"codigo\": 12345,\r\n\r\n\"identificacion\": \"YZ-123-CD\",\r\n\r\n\"tipo\": {\r\n\r\n\"codigo\": 12345,\r\n\r\n\"categoria\": \"Camioneta\",\r\n\r\n\"puertas\": \"5\"\r\n\r\n},\r\n\r\n\"modelo\": {\r\n\r\n\"codigo\": 12345678,\r\n\r\n\"marca\": \"Global Motors\",\r\n\r\n\"nombre\": \"911 Programador\"\r\n\r\n},\r\n\r\n\"fechaProduccion\": \"2020-08-17\"\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "create competidor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"numero\":2,\r\n\"nombre\":\"Sebastian Loeb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/competidores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"competidores"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/vehiculos/12345",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"vehiculos",
-						"12345"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete vehiculo",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/vehiculos/12345",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"vehiculos",
-						"12345"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get modelos",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/modelos/12345678",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"modelos",
-						"12345678"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get tipos",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/tipos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"tipos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "update modelos",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\r\n\"codigo\": 12345678,\r\n\r\n\"marca\": \"Global Logic\",\r\n\r\n\"nombre\": \"911 Programador\"\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "get competidores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/competidores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"competidores"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/modelos/12345678",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"modelos",
-						"12345678"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "update tipos",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\r\n\"codigo\": 12345,\r\n\r\n\"categoria\": \"Camioneta\",\r\n\r\n\"puertas\": \"5\"\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "get carreras",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/carreras",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carreras"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/tipos/12345",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"tipos",
-						"12345"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "create tipo",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\r\n\"codigo\": 12645,\r\n\r\n\"categoria\": \"Sedan\",\r\n\r\n\"puertas\": \"4\"\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "get carrera",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/carreras/Gran%20Carrera%20Global",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carreras",
+								"Gran%20Carrera%20Global"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/tipos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"tipos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete tipo",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/tipos/12345",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"tipos",
-						"12345"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "create modelo",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\r\n\"codigo\": 128945678,\r\n\r\n\"marca\": \"Global Motors\",\r\n\r\n\"nombre\": \"911 Programador\"\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "update carrera",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"fecha\": \"2020-09-17\",\r\n\r\n\"nombre\": \"Gran Carrera Global\",\r\n\r\n\"competidores\": [\r\n\r\n{\"numero\":2,\"Nombre\":\"Sebastian Loeb\"}\r\n\r\n]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/carreras/Gran%20Carrera%20Local",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carreras",
+								"Gran%20Carrera%20Local"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/modelos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"modelos"
-					]
+				{
+					"name": "delete carrera",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/carreras/Gran%20Carrera%20Global",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"carreras",
+								"Gran%20Carrera%20Global"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update competidor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"numero\":2,\"nombre\":\"Pablo Cocinero\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/competidores/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"competidores",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dalete competidor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/competidores/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"competidores",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get competidor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/competidores/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"competidores",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "delete modelo",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
+			"name": "5.1",
+			"item": [
+				{
+					"name": "Get Vehiculos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/vehiculos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehiculos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create vehiculo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"codigo\": 12345,\r\n\r\n\"identificacion\": \"AB-123-CD\",\r\n\r\n\"tipo\": {\r\n\r\n\"codigo\": 12345,\r\n\r\n\"categoria\": \"Sedan\",\r\n\r\n\"puertas\": \"4\"\r\n\r\n},\r\n\r\n\"modelo\": {\r\n\r\n\"codigo\": 12345678,\r\n\r\n\"marca\": \"Global Motors\",\r\n\r\n\"nombre\": \"911 Programador\"\r\n\r\n},\r\n\r\n\"fechaProduccion\": \"2020-08-17\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/vehiculos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehiculos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update vehiculo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"codigo\": 12345,\r\n\r\n\"identificacion\": \"YZ-123-CD\",\r\n\r\n\"tipo\": {\r\n\r\n\"codigo\": 12345,\r\n\r\n\"categoria\": \"Camioneta\",\r\n\r\n\"puertas\": \"5\"\r\n\r\n},\r\n\r\n\"modelo\": {\r\n\r\n\"codigo\": 12345678,\r\n\r\n\"marca\": \"Global Motors\",\r\n\r\n\"nombre\": \"911 Programador\"\r\n\r\n},\r\n\r\n\"fechaProduccion\": \"2020-08-17\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/vehiculos/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehiculos",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete vehiculo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/vehiculos/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehiculos",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get modelos",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/modelos/12345678",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modelos",
+								"12345678"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get tipos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tipos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tipos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update modelos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"codigo\": 12345678,\r\n\r\n\"marca\": \"Global Logic\",\r\n\r\n\"nombre\": \"911 Programador\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/modelos/12345678",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modelos",
+								"12345678"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update tipos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"codigo\": 12345,\r\n\r\n\"categoria\": \"Camioneta\",\r\n\r\n\"puertas\": \"5\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tipos/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tipos",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create tipo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"codigo\": 12645,\r\n\r\n\"categoria\": \"Sedan\",\r\n\r\n\"puertas\": \"4\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tipos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tipos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete tipo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tipos/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tipos",
+								"12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create modelo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"codigo\": 128945678,\r\n\r\n\"marca\": \"Global Motors\",\r\n\r\n\"nombre\": \"911 Programador\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/modelos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modelos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete modelo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
