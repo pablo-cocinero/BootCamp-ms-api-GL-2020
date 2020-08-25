@@ -9,12 +9,12 @@ import lombok.Data;
 @Data
 public class ErrorResponse {
 
-	@JsonProperty("message")
+	@JsonProperty("Message")
 	private String mensaje;
 	
-	@JsonProperty("satus_code")
+	@JsonProperty("Satus_Code")
 	private HttpStatus estado;
 	
-	@JsonProperty("uri")
+	@JsonProperty("Url")
 	private String url;
 }
