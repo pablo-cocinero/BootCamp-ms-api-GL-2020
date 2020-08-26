@@ -16,6 +16,7 @@ public class VehiculoService {
 
 	private VehiculoRepository vehiculoRepository;
 	
+	
 	public VehiculoService(VehiculoRepository vehiculoRepository)
 	{
 		this.vehiculoRepository = vehiculoRepository;

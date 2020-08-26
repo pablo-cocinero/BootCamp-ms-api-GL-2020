@@ -5,12 +5,14 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+import com.globallogic.bootcamp.vehiculos.service.VehiculoServiceTest;
+
+
 public class VehiculosApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		VehiculoServiceTest vehiculoServiceTest = new VehiculoServiceTest();
 	}
 
 }

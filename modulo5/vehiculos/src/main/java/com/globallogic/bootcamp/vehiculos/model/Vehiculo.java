@@ -16,6 +16,7 @@ import lombok.Data;
 
 @Component
 @Data
+//@AllArgsConstructor
 @Entity
 @Table(name = "vehiculo")
 public class Vehiculo {
