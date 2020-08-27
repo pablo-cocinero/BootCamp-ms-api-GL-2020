@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.globallogic.bootcamp.vehiculos.exceptions.ItemNotFound;
 import com.globallogic.bootcamp.vehiculos.model.Carrera;
 import com.globallogic.bootcamp.vehiculos.repository.CarreraRepository;
 
@@ -34,7 +35,7 @@ private CarreraRepository carreraRepository;
 		if (carrera.isPresent())
 			return carrera.get();
 		else
-			return null;
+			throw new ItemNotFound();
 	}
 	
 	public List<Carrera> findAll(){

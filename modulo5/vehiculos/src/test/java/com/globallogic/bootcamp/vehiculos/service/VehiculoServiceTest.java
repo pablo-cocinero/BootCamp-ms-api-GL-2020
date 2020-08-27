@@ -7,10 +7,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -19,6 +22,7 @@ import com.globallogic.bootcamp.vehiculos.model.Modelo;
 import com.globallogic.bootcamp.vehiculos.model.Tipo;
 import com.globallogic.bootcamp.vehiculos.model.Vehiculo;
 import com.globallogic.bootcamp.vehiculos.repository.VehiculoRepository;
+
 
 @ExtendWith(MockitoExtension.class)
 public class VehiculoServiceTest {
@@ -87,5 +91,24 @@ public class VehiculoServiceTest {
 		assertEquals(vehiculoService.update(vehiculo1),vehiculo1);
 	}
 	
+	@ParameterizedTest
+	@MethodSource("vehiculos")
+	public void testCase_05(Vehiculo vehiculo)
+	{
+		Optional<Vehiculo> vehiculoOpt = Optional.of(vehiculo);
+		when(vehiculoRepository.findById(vehiculo.getCodigo())).thenReturn(vehiculoOpt);
+		Vehiculo vehiculoResponse = vehiculoService.getById(vehiculo.getCodigo());
+		assertNotNull(vehiculoResponse);
+		assertEquals(vehiculoResponse,vehiculoOpt.get());
+	}
 	
+	private static Stream<Vehiculo> vehiculos(){
+		Vehiculo vehiculo2 = new Vehiculo();
+		vehiculo2.setCodigo(56);
+		Vehiculo vehiculo3 = new Vehiculo();
+		vehiculo3.setCodigo(99);
+		Vehiculo vehiculo4 = new Vehiculo();
+		vehiculo4.setCodigo(78);
+		return Stream.of(vehiculo2,vehiculo3,vehiculo4);
+	}
 }

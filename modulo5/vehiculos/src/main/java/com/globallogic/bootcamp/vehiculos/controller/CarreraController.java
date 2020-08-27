@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.globallogic.bootcamp.vehiculos.exceptions.ItemNotFound;
 import com.globallogic.bootcamp.vehiculos.model.Carrera;
 import com.globallogic.bootcamp.vehiculos.service.CarreraService;
-
+import static java.util.Objects.nonNull;
 @RestController
 public class CarreraController {
 
@@ -33,7 +34,11 @@ private CarreraService carreraService;
 	
 	@GetMapping(value = "/carreras/{id}")
 	public ResponseEntity<Object> getById(@PathVariable(name = "id") String id) {
-		return new ResponseEntity<>(carreraService.getById(id), HttpStatus.OK);
+		Carrera carreraResponse = carreraService.getById(id);
+		if(nonNull(carreraResponse))
+		return new ResponseEntity<>(carreraResponse, HttpStatus.OK);
+		else
+			throw new ItemNotFound();
 	}
 	
 	@PostMapping(value = "/carreras")

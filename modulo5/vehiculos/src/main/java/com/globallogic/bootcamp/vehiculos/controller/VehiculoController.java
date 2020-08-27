@@ -1,7 +1,7 @@
 package com.globallogic.bootcamp.vehiculos.controller;
 
 import static java.util.Objects.isNull;
-
+import static java.util.Objects.nonNull;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.globallogic.bootcamp.vehiculos.exceptions.ItemNotFound;
 import com.globallogic.bootcamp.vehiculos.model.Vehiculo;
 import com.globallogic.bootcamp.vehiculos.service.VehiculoService;
 
@@ -33,7 +34,11 @@ public class VehiculoController {
 	
 	@GetMapping(value = "/vehiculos/{id}")
 	public ResponseEntity<Object> getById(@PathVariable(name = "id") Integer id) {
-		return new ResponseEntity<>(vehiculoService.getById(id), HttpStatus.OK);
+		Vehiculo vehiculoResponse = vehiculoService.getById(id);
+		if(nonNull(vehiculoResponse))
+		return new ResponseEntity<>(vehiculoResponse, HttpStatus.OK);
+		else
+			throw new ItemNotFound();
 	}
 	
 	@PostMapping(value = "/vehiculos")

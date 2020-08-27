@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.globallogic.bootcamp.vehiculos.exceptions.ItemNotFound;
 import com.globallogic.bootcamp.vehiculos.model.Vehiculo;
 import com.globallogic.bootcamp.vehiculos.repository.VehiculoRepository;
 
@@ -35,7 +36,7 @@ public class VehiculoService {
 		if (vehiculo.isPresent())
 			return vehiculo.get();
 		else
-			return null;
+			throw new ItemNotFound();
 	}
 	
 	public List<Vehiculo> findAll(){

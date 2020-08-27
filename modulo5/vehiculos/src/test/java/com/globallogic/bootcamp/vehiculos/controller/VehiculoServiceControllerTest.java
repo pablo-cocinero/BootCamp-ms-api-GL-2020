@@ -1,6 +1,7 @@
-package com.globallogic.bootcamp.vehiculos;
+package com.globallogic.bootcamp.vehiculos.controller;
 
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -24,11 +25,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.util.NestedServletException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import com.globallogic.bootcamp.vehiculos.controller.VehiculoController;
 import com.globallogic.bootcamp.vehiculos.model.Modelo;
 import com.globallogic.bootcamp.vehiculos.model.Tipo;
 import com.globallogic.bootcamp.vehiculos.model.Vehiculo;
@@ -129,6 +129,15 @@ class VehiculoServiceControllerTest {
 		mockMvc.perform(delete("/vehiculos/34"))
 		.andExpect(status().isOk())
 		.andExpect(jsonPath("$",is("Vehiculo Eliminado")));
+	}
+	
+	@Test
+	@DisplayName("Exception Test")
+	void testCase_06() {
+		when(vehiculoService.getById(84749)).thenReturn(null);
+		assertThatThrownBy(() -> {
+			mockMvc.perform(get("/vehiculos/84749"));
+		}).isInstanceOf(NestedServletException.class);
 	}
 	
 	private String mapToJson(Object object) throws JsonProcessingException {
